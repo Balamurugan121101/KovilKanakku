@@ -4,8 +4,7 @@ import 'package:temple/repositories/auth_repository.dart';
 
 final authRepositoryProvider = Provider((ref) => AuthRepository());
 
-final authControllerProvider =
-StateNotifierProvider<AuthController, bool>((ref) {
+final authControllerProvider = StateNotifierProvider<AuthController, bool>((ref) {
   return AuthController(ref.read(authRepositoryProvider));
 });
 

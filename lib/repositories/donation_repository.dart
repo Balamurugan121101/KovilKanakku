@@ -39,33 +39,78 @@ class DonationRepository {
     return "$prefix-${nextNumber.toString().padLeft(6, '0')}";
   }
 
-  Future<void> addDonation({
+  Future<DonationModel> addDonation({
     required String donorName,
     required double amount,
     String? phone,
     String? purpose,
     String? eventId,
   }) async {
+    late DonationModel donation;
+
     await _firestore.runTransaction((transaction) async {
-      final settingsSnapshot = await transaction.get(_settingsDoc);
+      final settingsSnapshot =
+      await transaction.get(_settingsDoc);
+
+      final settingsData = settingsSnapshot.data();
+
+      if (settingsData == null) {
+        throw Exception('Temple settings not found');
+      }
+
+      final prefix =
+      settingsData['receiptPrefix'] as String;
+
+      final nextNumber =
+      settingsData['nextReceiptNumber'] as int;
 
       final receiptNumber =
-      await _generateReceiptNumber(transaction, settingsSnapshot);
+          '$prefix-${nextNumber.toString().padLeft(6, '0')}';
 
-      final donationDoc = _donationCollection.doc();
+      final donationDoc =
+      _donationCollection.doc();
 
-      transaction.set(donationDoc, {
-        "id": donationDoc.id,
-        "donorName": donorName,
-        "amount": amount,
-        "phone": phone,
-        "purpose": purpose,
-        "eventId": eventId,
-        "receiptNumber": receiptNumber,
-        "createdBy": FirebaseAuth.instance.currentUser!.uid,
-        "donatedAt": Timestamp.now(),
-      });
+      final donatedAt = DateTime.now();
+
+      donation = DonationModel(
+        id: donationDoc.id,
+        donorName: donorName,
+        amount: amount,
+        phone: phone,
+        purpose: purpose,
+        eventId: eventId,
+        receiptNumber: receiptNumber,
+        createdBy:
+        FirebaseAuth.instance.currentUser!.uid,
+        donatedAt: donatedAt,
+      );
+
+      transaction.set(
+        donationDoc,
+        {
+          'id': donation.id,
+          'donorName': donation.donorName,
+          'amount': donation.amount,
+          'phone': donation.phone,
+          'purpose': donation.purpose,
+          'eventId': donation.eventId,
+          'receiptNumber': donation.receiptNumber,
+          'createdBy': donation.createdBy,
+          'donatedAt': Timestamp.fromDate(
+            donation.donatedAt,
+          ),
+        },
+      );
+
+      transaction.update(
+        _settingsDoc,
+        {
+          'nextReceiptNumber': nextNumber + 1,
+        },
+      );
     });
+
+    return donation;
   }
 
   Future<List<DonationModel>> getDonations() async {

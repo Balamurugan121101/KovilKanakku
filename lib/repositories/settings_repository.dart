@@ -1,21 +1,43 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:temple/firebase/firestore_paths.dart';
-import 'package:temple/models/settings_model.dart';
+
+import '../models/settings_model.dart';
 
 class SettingsRepository {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore _firestore =
+      FirebaseFirestore.instance;
 
-  Future<SettingsModel> getSettings() async {
-    final doc = await _firestore
-        .doc('${FirestorePaths.settings()}/config')
-        .get();
+  // Change this later when multi-temple login is implemented.
+  static const String templeId = 'temple001';
 
-    return SettingsModel.fromJson(doc.data()!);
+  DocumentReference<Map<String, dynamic>>
+  get _settingsRef {
+    return _firestore
+        .collection('temples')
+        .doc(templeId)
+        .collection('settings')
+        .doc('config');
   }
 
-  Future<void> updateSettings(SettingsModel settings) async {
-    await _firestore
-        .doc('${FirestorePaths.settings()}/config')
-        .set(settings.toJson());
+  Future<SettingsModel?> getSettings() async {
+    final snapshot = await _settingsRef.get();
+
+    if (!snapshot.exists) {
+      return null;
+    }
+
+    return SettingsModel.fromJson(
+      snapshot.data()!,
+    );
+  }
+
+  Future<void> saveSettings(
+      SettingsModel settings,
+      ) async {
+    await _settingsRef.set(
+      settings.toJson(),
+      SetOptions(
+        merge: true,
+      ),
+    );
   }
 }
