@@ -8,21 +8,21 @@ Kovil Kanakku is designed for small temples that need a simple way to record inc
 
 ## 📱 Screenshots
 
-| Login                                   | Dashboard                                | Settings                               |
-|-----------------------------------------|------------------------------------------|----------------------------------------|
+| Login | Dashboard | Settings |
+|---|---|---|
 | ![Login](docs/images/login_screen.jpeg) | ![Dashboard](docs/images/dashboard.jpeg) | ![Settings](docs/images/settings.jpeg) |
 
-| Donations                               | Donation Detail                                      | Donation Preview                                       |
-|-----------------------------------------|------------------------------------------------------|--------------------------------------------------------|
+| Donations | Donation Detail | Donation Preview |
+|---|---|---|
 | ![Donations](docs/images/donation.jpeg) | ![Donation Detail](docs/images/donation_detail.jpeg) | ![Donation Preview](docs/images/donation_preview.jpeg) |
 
-| Expenses                              | Expenses Detail                                     | Events                            |
-|---------------------------------------|-----------------------------------------------------|-----------------------------------|
-| ![Expenses](docs/images/expense.jpeg) | ![Expenses Detail](docs/images/expense_detail.jpeg) | ![Events](docs/images/event.jpeg) |
+| Expenses | Expense Detail | Events |
+|---|---|---|
+| ![Expenses](docs/images/expense.jpeg) | ![Expense Detail](docs/images/expense_detail.jpeg) | ![Events](docs/images/event.jpeg) |
 
-| Events Detail                                   | Report                             | Report Preview                                     |
-|-------------------------------------------------|------------------------------------|----------------------------------------------------|
-| ![Events Detail](docs/images/event_detail.jpeg) | ![Report](docs/images/report.jpeg) | ![Report Preview](docs/images/report_preview.jpeg) |
+| Event Detail | Reports | Report Preview |
+|---|---|---|
+| ![Event Detail](docs/images/event_detail.jpeg) | ![Reports](docs/images/report.jpeg) | ![Report Preview](docs/images/report_preview.jpeg) |
 
 
 \---
