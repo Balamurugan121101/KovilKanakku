@@ -931,51 +931,6 @@ Temple Membership
 
 \---
 
-# 🤝 Contributing
-
-Contributions are welcome.
-
-Create a feature branch:
-
-```bash
-git checkout -b feature/my-feature
-```
-
-Format the code:
-
-```bash
-dart format .
-```
-
-Analyze:
-
-```bash
-flutter analyze
-```
-
-Run tests:
-
-```bash
-flutter test
-```
-
-Commit:
-
-```bash
-git add .
-git commit -m "Add my feature"
-```
-
-Push:
-
-```bash
-git push origin feature/my-feature
-```
-
-Then create a Pull Request.
-
-\---
-
 # 📚 Useful Resources
 
 * Flutter: https://flutter.dev/
