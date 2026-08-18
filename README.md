@@ -100,11 +100,11 @@ lib/
 
 │
 ├── models/
-│   ├── donation\_model.dart
-│   ├── expense\_model.dart
-│   ├── event\_model.dart
-│   ├── settings\_model.dart
-│   └── user\_model.dart
+│   ├── donation_model.dart
+│   ├── expense_model.dart
+│   ├── event_model.dart
+│   ├── settings_model.dart
+│   └── user_model.dart
 │
 ├── pages/
 │   ├── auth/
@@ -116,23 +116,21 @@ lib/
 │   └── settings/
 │
 ├── providers/
-│   ├── donation\_provider.dart
-│   ├── expense\_provider.dart
-│   ├── event\_provider.dart
-│   └── report\_provider.dart
+│   ├── donation_provider.dart
+│   ├── expense_provider.dart
+│   ├── event_provider.dart
+│   └── report_provider.dart
 │
 ├── repositories/
-│   ├── donation\_repository.dart
-│   ├── expense\_repository.dart
-│   ├── event\_repository.dart
-│   ├── user\_repository.dart
-│   └── settings\_repository.dart
+│   ├── donation_repository.dart
+│   ├── expense_repository.dart
+│   ├── event_repository.dart
+│   ├── user_repository.dart
+│   └── settings_repository.dart
 │
 ├── services/
-│   ├── receipt\_service.dart
-│   └── report\_pdf\_service.dart
-│
-├── firebase\_options.dart
+│   ├── receipt_service.dart
+│   └── report_pdf_service.dart
 │
 └── main.dart
 ```
